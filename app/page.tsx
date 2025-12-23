@@ -1,20 +1,11 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
 import { Grid } from '@mui/material';
 import DevCard from './components/DevCard';
 
 export default function Home() {
 
   return (
-    <Grid spacing={1}>
-      <Grid size={{ xs: 4, sm: 6, md: 4 }}>
         <Grid container >
-          <Grid size={{ xs: 4, sm: 6, md: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }}>
             <DevCard name="Gabriel Vaz Scremim" cargo="Developer" description="Aluno do curso de Ciência da Computação da UniFil - Londrina. Estagiário na Gmaster - Londrina." image="http://152.67.45.167/img/scremim.jpg"
               socials={{
                 instagram: 'https://www.instagram.com/gabrielscremim',
@@ -22,7 +13,7 @@ export default function Home() {
                 github: 'https://github.com/gabrielscremim'
               }} />
           </Grid>
-          <Grid size={{ xs: 4, sm: 6, md: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }}>
             <DevCard name="Gabriel Segobi de Souza" cargo="Developer" description="Aluno do curso de Ciência da Computação da UniFil - Londrina. Desenvolvedor na Gmaster " image="http://152.67.45.167/img/segobi.jpg" socials={{
               instagram: 'https://www.instagram.com/gabrielsegobi_',
               linkedin: 'https://www.linkedin.com/in/gabriel-segobi-8a277628b/',
@@ -30,8 +21,5 @@ export default function Home() {
             }} />
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
-
   );
 }

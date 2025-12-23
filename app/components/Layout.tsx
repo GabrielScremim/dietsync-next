@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import {
   AppBar,
@@ -27,7 +28,6 @@ import {
   BarChart
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Diversity1Icon from '@mui/icons-material/Diversity1';
@@ -36,6 +36,18 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 const drawerWidthOpen = 220;
 const drawerWidthClosed = 72;
+
+const menuItems = [
+  { text: 'Home', icon: <Home />, href: '/' },
+  { text: 'Registrar Dieta', icon: <BarChart />, href: '/dietas/registrar' },
+  { text: 'Registrar Treino', icon: <Settings />, href: '/treinos/registrar' },
+  { text: 'Registrar Receitas', icon: <Settings />, href: '/receitas/registrar' },
+  { text: 'Dietas', icon: <RestaurantMenuIcon />, href: '/dietas' },
+  { text: 'Treinos', icon: <FitnessCenterIcon />, href: '/treinos' },
+  { text: 'Evolução', icon: <TrendingUpIcon />, href: '/evolucao' },
+  { text: 'Receitas', icon: <MenuBookIcon />, href: '/receitas' },
+  { text: 'Agradecimentos', icon: <Diversity1Icon />, href: '/agradecimentos' }
+];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
@@ -121,19 +133,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Toolbar />
 
         <List>
-          {[
-            { text: 'Home', icon: <Home /> },
-            { text: 'Registrar Dieta', icon: <BarChart /> },
-            { text: 'Registrar Treino', icon: <Settings /> },
-            { text: 'Registrar Receitas', icon: <Settings /> },
-            { text: 'Dietas', icon: <RestaurantMenuIcon /> },
-            { text: 'Treinos', icon: <FitnessCenterIcon /> },
-            { text: 'Evolução', icon: <TrendingUpIcon /> },
-            { text: 'Receitas', icon: <MenuBookIcon /> },
-            { text: 'Agradecimentos', icon: <Diversity1Icon /> }
-          ].map((item) => (
-            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+          {menuItems.map((item) => (
+            <ListItem key={item.text} disablePadding>
               <ListItemButton
+                component={Link}
+                href={item.href}
                 sx={{
                   minHeight: 48,
                   justifyContent: sidebarOpen ? 'initial' : 'center',
@@ -145,11 +149,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     minWidth: 0,
                     mr: sidebarOpen ? 2 : 'auto',
                     justifyContent: 'center',
-                    color: '#fff'
+                    color: '#1DB954'
                   }}
                 >
                   {item.icon}
                 </ListItemIcon>
+
                 <ListItemText
                   primary={item.text}
                   sx={{ opacity: sidebarOpen ? 1 : 0 }}
