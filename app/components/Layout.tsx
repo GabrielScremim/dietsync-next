@@ -172,7 +172,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           flexGrow: 1,
           p: 3,
           mt: 8,
-          ml: sidebarOpen && !isMobile ? `${drawerWidthOpen}px` : `${drawerWidthClosed}px`,
           transition: 'margin 0.3s'
         }}
       >

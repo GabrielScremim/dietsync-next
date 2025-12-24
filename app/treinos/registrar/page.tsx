@@ -32,7 +32,7 @@ export default function RegistrarTreinos() {
                         value=""
                         onChange={(e) => setDescricao(e.target.value)}
                         placeholder="Descreva os exercícios do treino aqui..."
-                        rows={10}
+                        rows={5}
                         maxLength={1000}
                     />
                 </Grid>
