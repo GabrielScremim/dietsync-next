@@ -1,6 +1,6 @@
 'use client';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
-import { getDietas } from "../service/ditaService";
+import { getDietas } from "../services/dietaService";
 import { useEffect, useState } from "react";
 
 // types/Dieta.ts
@@ -21,11 +21,11 @@ export interface Dieta {
 
 export default function Dietas() {
     const [dietas, setDietas] = useState<Dieta[]>([]);
-
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc2NjcwMDU1NiwiZXhwIjoxNzY2NzA0MTU2fQ.GexTnWbJbNYRQzSVUJ9c5anDRv1XNzHDnvZ5IdA5z9g"
     useEffect(() => {
         const fetchDieta = async () => {
             try {
-                const response = await getDietas();
+                const response = await getDietas(token);
                 setDietas(response.data); // ⬅️ array correto
             } catch (error) {
                 console.error("Erro ao buscar dieta:", error);

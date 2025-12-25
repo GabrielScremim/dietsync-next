@@ -11,3 +11,13 @@ export const getTreinos = () => {
         },
     });
 };
+
+export const CreateTreino = (token: string, treinos: any) => {
+    return axios.post(`${TREINO_API_BASE_URL}treinos`, treinos, {
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+}
