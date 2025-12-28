@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser'); // 🔥 FALTAVA ISSO
 
 const app = express();
 app.use(express.json());
@@ -10,8 +11,13 @@ const { swaggerUi, swaggerDocs } = require("./swagger");
 
 // Rota para acessar a documentação
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // ⚠️ EXATO
+    credentials: true,               // 🔥 OBRIGATÓRIO
+  })
+);
 
 const port = process.env.PORT || 3001;
 
@@ -34,5 +40,5 @@ app.use("/dietas", dietaRoutes);
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
   console.log(`Swagger rodando em http://localhost:${port}/api-docs`);
-  
+
 });

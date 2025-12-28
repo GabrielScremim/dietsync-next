@@ -26,6 +26,14 @@ exports.login = async (req, res) => {
       { expiresIn: '1h' } // Definindo o tempo de expiração do token (1 hora aqui)
     );
 
+    // 🍪 SALVAR TOKEN NO COOKIE (AQUI É O PONTO CERTO)
+    res.cookie("auth-token", token, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false, // true em produção (https)
+      maxAge: 60 * 60 * 1000, // 1h
+    });
+
     res.json({
       message: "Login realizado com sucesso",
       user: {

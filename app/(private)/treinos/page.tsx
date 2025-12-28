@@ -1,7 +1,7 @@
 'use client';
+import { getTreinos } from "@/app/services/treinoService";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getTreinos } from "../services/treinoService";
 
 type Treino = {
     id: number

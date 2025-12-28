@@ -1,6 +1,6 @@
 'use client';
+import { getDietas } from "@/app/services/dietaService";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
-import { getDietas } from "../services/dietaService";
 import { useEffect, useState } from "react";
 
 // types/Dieta.ts

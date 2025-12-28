@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import TextArea from "@/app/components/TextArea";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { CreateDieta } from "../../services/dietaService";
 import BtnSend from "@/app/components/BtnSend";
+import { CreateDieta } from "@/app/services/dietaService";
 
 export type Dieta = {
     nome_dieta: string;

@@ -3,9 +3,9 @@ import SelectDiasSemana from "@/app/components/SelectDiasSemana";
 import TextArea from "@/app/components/TextArea";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { CreateTreino } from "../../services/treinoService";
 import BtnSend from "@/app/components/BtnSend";
 import { useRouter } from "next/navigation";
+import { CreateTreino } from "@/app/services/treinoService";
 export type Treino = {
     usuario_id: number;
     data: string; // YYYY-MM-DD
