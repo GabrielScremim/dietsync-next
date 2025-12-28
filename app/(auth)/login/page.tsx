@@ -17,7 +17,7 @@ export default function LoginPage() {
 
     try {
       const res = await login(email, password);
-      router.push('/');
+      router.push('/home');
     } catch (error) {
       setError('Usuário ou senha inválidos' + error);
     }

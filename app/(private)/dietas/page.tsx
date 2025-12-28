@@ -21,7 +21,8 @@ export interface Dieta {
 
 export default function Dietas() {
     const [dietas, setDietas] = useState<Dieta[]>([]);
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc2NjcwMDU1NiwiZXhwIjoxNzY2NzA0MTU2fQ.GexTnWbJbNYRQzSVUJ9c5anDRv1XNzHDnvZ5IdA5z9g"
+    const token = localStorage.getItem('auth-token') || '';
+    console.log("Token em Dietas:", token);
     useEffect(() => {
         const fetchDieta = async () => {
             try {

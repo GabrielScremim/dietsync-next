@@ -32,6 +32,7 @@ exports.login = async (req, res) => {
       sameSite: "lax",
       secure: false, // true em produção (https)
       maxAge: 60 * 60 * 1000, // 1h
+      path: "/", // 🔥
     });
 
     res.json({

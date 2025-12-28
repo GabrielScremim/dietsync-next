@@ -1,8 +1,4 @@
 'use client';
-import type { Metadata } from "next";
-import Layout from "./components/Layout";
-import { useState } from "react";
-import Login from "./components/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 // export const metadata: Metadata = {
 //   title: "Dietsync",
