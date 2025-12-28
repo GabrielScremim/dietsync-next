@@ -1,10 +1,8 @@
 import axios, { AxiosResponse } from 'axios';
-import { cookies } from 'next/headers';
 
 // Definindo a URL base da API
 const DIETA_API_BASE_URL = 'http://localhost:3001/';
-const cookieStore = await cookies();
-const token = cookieStore.get('auth-token')?.value;
+const token = ""
 // Tipagem do tipo Dieta
 export type Dieta = {
     nome_dieta: string;
