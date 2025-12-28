@@ -3,6 +3,7 @@ import { getDietas } from "@/app/services/dietaService";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
+
 // types/Dieta.ts
 export interface Dieta {
     id_dieta: number;
@@ -20,13 +21,11 @@ export interface Dieta {
 }
 
 export default function Dietas() {
-    const [dietas, setDietas] = useState<Dieta[]>([]);
-    const token = localStorage.getItem('auth-token') || '';
-    console.log("Token em Dietas:", token);
+    const [dietas, setDietas] = useState<any[]>([]);
     useEffect(() => {
         const fetchDieta = async () => {
             try {
-                const response = await getDietas(token);
+                const response = await getDietas();
                 setDietas(response.data); // ⬅️ array correto
             } catch (error) {
                 console.error("Erro ao buscar dieta:", error);

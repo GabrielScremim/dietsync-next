@@ -1,7 +1,11 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { cookies } from 'next/headers';
 
+// Definindo a URL base da API
 const DIETA_API_BASE_URL = 'http://localhost:3001/';
-
+const cookieStore = await cookies();
+const token = cookieStore.get('auth-token')?.value;
+// Tipagem do tipo Dieta
 export type Dieta = {
     nome_dieta: string;
     tipo_dieta: string;
@@ -16,8 +20,25 @@ export type Dieta = {
     observacoes: string;
     fk_id_usuario_dieta: number;
 };
-export const getDietas = (token: string) => {
+
+// Função para obter dietas
+export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
     return axios.get(`${DIETA_API_BASE_URL}dietas`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`,  // Usa o token na autorização
+        },
+    });
+};
+
+// Função para obter uma dieta pelo ID
+export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
+    if (!token) {
+        return Promise.reject('Usuário não está logado!');  // Rejeita se o token não for encontrado
+    }
+
+    return axios.get(`${DIETA_API_BASE_URL}dietas/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -26,17 +47,12 @@ export const getDietas = (token: string) => {
     });
 };
 
-export const getDietaById = (token: string, id: number) => {
-    return axios.get(`${DIETA_API_BASE_URL}dietas/${id}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
-    });
-}
+// Função para criar uma nova dieta
+export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
+    if (!token) {
+        return Promise.reject('Usuário não está logado!');  // Rejeita se o token não for encontrado
+    }
 
-export const CreateDieta = (token: string, data: Dieta) => {
     return axios.post(`${DIETA_API_BASE_URL}dietas`, data, {
         headers: {
             'Content-Type': 'application/json',
@@ -44,4 +60,4 @@ export const CreateDieta = (token: string, data: Dieta) => {
             Authorization: `Bearer ${token}`,
         },
     });
-}
+};
