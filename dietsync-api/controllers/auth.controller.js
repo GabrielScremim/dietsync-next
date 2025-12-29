@@ -27,13 +27,14 @@ exports.login = async (req, res) => {
     );
 
     // 🍪 SALVAR TOKEN NO COOKIE (AQUI É O PONTO CERTO)
-    res.cookie("auth-token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       sameSite: "lax",
-      secure: false, // true em produção (https)
-      maxAge: 60 * 60 * 1000, // 1h
-      path: "/", // 🔥
+      secure: false, // true em produção com HTTPS
+      maxAge: 60 * 60 * 1000, // 1 hora
+      path: "/", // para todas as rotas
     });
+
 
     res.json({
       message: "Login realizado com sucesso",

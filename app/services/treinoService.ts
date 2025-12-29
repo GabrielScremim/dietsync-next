@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const TREINO_API_BASE_URL = 'http://localhost:3001/';
-
+const token = localStorage.getItem('token'); // Obtém o token do localStorage
 export const getTreinos = () => {
     return axios.get(`${TREINO_API_BASE_URL}treinos`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc2NjYwNDI5NSwiZXhwIjoxNzY2NjA3ODk1fQ.l1NaEge6U5iZLtdEdL95gAMe5f0SClHqs4HDfjZ9vjw`,
         },
+        withCredentials: true, // ✅ fora do headers
     });
 };
 
@@ -17,7 +17,7 @@ export const CreateTreino = (token: string, treinos: any) => {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${token}`,
         },
+        withCredentials: true, // ✅ fora do headers
     });
 }

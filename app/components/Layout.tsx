@@ -81,7 +81,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </IconButton>
 
           <Typography sx={{ flexGrow: 1, ml: 2 }} variant="h6">
-            Diet Sync
+            DietSync
           </Typography>
 
           <IconButton onClick={(e) => setMenuAnchor(e.currentTarget)}>
@@ -96,12 +96,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             onClose={() => setMenuAnchor(null)}
             onClick={() => setMenuAnchor(null)}
           >
-            <MenuItem>
-              <ListItemIcon>
-                <Person fontSize="small" />
-              </ListItemIcon>
-              Perfil
-            </MenuItem>
+            <Link href="/perfil">
+              <MenuItem>
+                <ListItemIcon>
+                  <Person fontSize="small" />
+                </ListItemIcon>
+                Perfil
+              </MenuItem>
+            </Link>
 
             <MenuItem>
               <ListItemIcon>

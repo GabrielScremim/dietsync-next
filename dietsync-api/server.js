@@ -1,25 +1,24 @@
 require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
-const cookieParser = require('cookie-parser'); // 🔥 FALTAVA ISSO
+const cookieParser = require('cookie-parser'); // Para ler cookies
 
 const app = express();
-app.use(express.json());
+const port = process.env.PORT || 3001;
 
-// Importar Swagger
-const { swaggerUi, swaggerDocs } = require("./swagger");
-
-// Rota para acessar a documentação
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-app.use(cookieParser());
+// Middlewares globais
+app.use(express.json()); // Para parsear JSON
+app.use(cookieParser()); // Para ler cookies
 app.use(
   cors({
-    origin: 'http://localhost:3000', // ⚠️ EXATO
-    credentials: true,               // 🔥 OBRIGATÓRIO
+    origin: 'http://localhost:3000', // Front-end que vai consumir a API
+    credentials: true,               // Obrigatório para cookies cross-site
   })
 );
 
-const port = process.env.PORT || 3001;
+// Importar Swagger
+const { swaggerUi, swaggerDocs } = require("./swagger");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Importar rotas
 const authRoutes = require("./routes/auth.routes");
@@ -37,8 +36,8 @@ app.use("/evolucaos", evolucaoRoutes);
 app.use("/treinos", treinoRoutes);
 app.use("/dietas", dietaRoutes);
 
+// Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
   console.log(`Swagger rodando em http://localhost:${port}/api-docs`);
-
 });

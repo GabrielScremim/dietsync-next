@@ -2,7 +2,7 @@
 import { getTreinos } from "@/app/services/treinoService";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 type Treino = {
     id: number
     data: Date
@@ -41,11 +41,12 @@ export default function Treinos() {
             {treinos.map((treino) => (
                 <Accordion key={treino.id} sx={{ mb: 2 }}>
                     <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
                         aria-controls={`panel-${treino.tipo}-content`}
                         id={`panel-${treino.tipo}-header`}
                     >
                         <Typography fontWeight="bold">
-                            {treino.nome_treino} — {treino.dia_treino}
+                            {treino.nome_treino}
                         </Typography>
                     </AccordionSummary>
 

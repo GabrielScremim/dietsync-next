@@ -118,8 +118,24 @@ router.get("/", verifyToken, usersController.getUsers);
  *                   type: string
  *                 sobrenome:
  *                   type: string
+ *                 meta:
+ *                   type: string
+ *                 sexo:
+ *                   type: string
+ *                 data_nasc:
+ *                   type: string
+ *                   format: date
+ *                 peso:
+ *                   type: number
+ *                   format: float
+ *                 altura:
+ *                   type: number
+ *                   format: float
  *                 email:
  *                   type: string
+ *                 password:
+ *                   type: string
+ *                   description: Senha do usuário
  *       404:
  *         description: Usuário não encontrado
  */

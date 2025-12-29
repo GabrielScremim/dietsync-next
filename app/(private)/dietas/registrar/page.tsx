@@ -38,12 +38,11 @@ export default function RegistrarDietaPage() {
         observacoes: '',
         fk_id_usuario_dieta: 41, // exemplo
     });
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc2NjcwMzA0MiwiZXhwIjoxNzY2NzA2NjQyfQ.2BXvSxFFLvu3utshAh-6720SLzZt0WbfagR9K3L4QRA"
 
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            await CreateDieta(token, dieta);
+            await CreateDieta(dieta);
             // redireciona para a página de dietas
             router.push("/dietas");
         } catch (error) {

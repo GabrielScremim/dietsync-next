@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 
 // Definindo a URL base da API
 const DIETA_API_BASE_URL = 'http://localhost:3001/';
-const token = ""
+const token = localStorage.getItem('token'); // Obtém o token do localStorage
 // Tipagem do tipo Dieta
 export type Dieta = {
     nome_dieta: string;
@@ -25,8 +25,8 @@ export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${token}`,  // Usa o token na autorização
         },
+        withCredentials: true, // ✅ fora do headers
     });
 };
 
@@ -40,8 +40,8 @@ export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${token}`,
         },
+        withCredentials: true, // ✅ fora do headers
     });
 };
 
@@ -55,7 +55,7 @@ export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${token}`,
         },
+        withCredentials: true, // ✅ fora do headers
     });
 };

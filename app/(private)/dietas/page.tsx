@@ -42,7 +42,7 @@ export default function Dietas() {
             </Typography>
 
             {dietas.map((dieta) => (
-                <Accordion key={dieta.id_dieta}>
+                <Accordion key={dieta.id_dieta} sx={{ mb: 2 }}>
                     <AccordionSummary
                         aria-controls={`panel-${dieta.id_dieta}-content`}
                         id={`panel-${dieta.id_dieta}-header`}
