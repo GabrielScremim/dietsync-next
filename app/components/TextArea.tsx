@@ -60,7 +60,7 @@ export default function TextArea({
                         color: '#6b7280'
                     }}
                 >
-                    {value.length}/{maxLength}
+                    {value?.length}/{maxLength}
                 </Typography>
             )}
         </Box>

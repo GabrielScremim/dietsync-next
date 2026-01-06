@@ -148,6 +148,57 @@ router.post("/", verifyToken, dietasController.createDieta);
 
 /**
  * @swagger
+ * /dietas:
+ *   put:
+ *     summary: Cria uma nova dieta
+ *     tags: [Dietas]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - nome_dieta
+ *               - tipo_dieta
+ *               - data
+ *             properties:
+ *               nome_dieta:
+ *                 type: string
+ *               tipo_dieta:
+ *                 type: string
+ *               calorias:
+ *                 type: number
+ *               proteinas:
+ *                 type: number
+ *               carboidratos:
+ *                 type: number
+ *               gorduras:
+ *                 type: number
+ *               data:
+ *                 type: string
+ *                 format: date
+ *               refeicao:
+ *                 type: string
+ *               quantidade:
+ *                 type: number
+ *               alimentos:
+ *                 type: string
+ *               observacoes:
+ *                 type: string
+ *               fk_id_usuario_dieta:
+ *                 type: integer
+ *                 description: ID do usuário (opcional, default 40)
+ *     responses:
+ *       200:
+ *         description: Dieta criada com sucesso
+ *       500:
+ *         description: Erro ao criar dieta
+ */
+router.put("/:id", verifyToken, dietasController.editDieta);
+
+/**
+ * @swagger
  * /dietas/excluir/{id}:
  *   delete:
  *     summary: Deleta uma dieta

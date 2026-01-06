@@ -43,6 +43,69 @@ exports.createDieta = async (req, res) => {
     res.status(500).json({ message: "Erro ao inserir dieta." });
   }
 }
+exports.editDieta = async (req, res) => {
+  try {
+    const { id } = req.params;  // Obtém o 'id' da dieta a ser editada
+    const {
+      nome_dieta,
+      tipo_dieta,
+      calorias,
+      proteinas,
+      carboidratos,
+      gorduras,
+      data,
+      refeicao,
+      quantidade,
+      alimentos,
+      observacoes,
+    } = req.body;
+
+    // A query SQL para atualizar os dados da dieta
+    const sql = `
+      UPDATE dietas SET 
+        nome_dieta = ?, 
+        tipo_dieta = ?, 
+        calorias = ?, 
+        proteinas = ?, 
+        carboidratos = ?, 
+        gorduras = ?, 
+        data_dieta = ?, 
+        refeicao = ?, 
+        quantidade = ?, 
+        alimentos = ?, 
+        observacoes = ? 
+      WHERE id_dieta = ?
+    `;
+
+    // Executa a query no banco de dados com os dados atualizados
+    const [result] = await db.query(sql, [
+      nome_dieta,
+      tipo_dieta,
+      calorias,
+      proteinas,
+      carboidratos,
+      gorduras,
+      data,
+      refeicao,
+      quantidade,
+      alimentos,
+      observacoes,
+      id,  // O 'id' da dieta para localizar o registro específico
+    ]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Dieta não encontrada." });
+    }
+
+    res.json({
+      message: "Dieta atualizada com sucesso!",
+    });
+  } catch (err) {
+    console.error("Erro ao atualizar dieta:", err);
+    res.status(500).json({ message: "Erro ao atualizar dieta." });
+  }
+};
+
 exports.getDietas = async (req, res) => {
   try {
     const [results] = await db.query("SELECT * FROM dietas");

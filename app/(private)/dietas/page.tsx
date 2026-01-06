@@ -1,6 +1,6 @@
 'use client';
 import { getDietas } from "@/app/services/dietaService";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 
@@ -82,6 +82,8 @@ export default function Dietas() {
                                 <strong>Observações:</strong> {dieta.observacoes}
                             </Typography>
                         )}
+
+                        <Button href={`/dietas/editar/${dieta.id_dieta}`}>Editrar</Button>
                     </AccordionDetails>
                 </Accordion>
             ))}

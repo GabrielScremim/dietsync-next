@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from 'axios';
 
 // Definindo a URL base da API
 const DIETA_API_BASE_URL = 'http://localhost:3001/';
-const token = localStorage.getItem('token'); // Obtém o token do localStorage
 // Tipagem do tipo Dieta
 export type Dieta = {
     nome_dieta: string;
@@ -32,11 +31,7 @@ export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
 
 // Função para obter uma dieta pelo ID
 export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
-    if (!token) {
-        return Promise.reject('Usuário não está logado!');  // Rejeita se o token não for encontrado
-    }
-
-    return axios.get(`${DIETA_API_BASE_URL}dietas/${id}`, {
+       return axios.get(`${DIETA_API_BASE_URL}dietas/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -47,10 +42,6 @@ export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
 
 // Função para criar uma nova dieta
 export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
-    if (!token) {
-        return Promise.reject('Usuário não está logado!');  // Rejeita se o token não for encontrado
-    }
-
     return axios.post(`${DIETA_API_BASE_URL}dietas`, data, {
         headers: {
             'Content-Type': 'application/json',
@@ -59,3 +50,13 @@ export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
         withCredentials: true, // ✅ fora do headers
     });
 };
+
+export const EditDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
+    return axios.put(`${DIETA_API_BASE_URL}/dietas`, data, {
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        withCredentials: true, // ✅ fora do headers
+    })
+}
