@@ -1,6 +1,6 @@
 'use client';
 import { getTreinos } from "@/app/services/treinoService";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 type Treino = {
@@ -74,7 +74,7 @@ export default function Treinos() {
                         <Typography mt={2}>
                             <strong>Frequência:</strong> {treino.frequencia}
                         </Typography>
-
+                        <Button href={`/treinos/editar/${treino.id}`}>Editar</Button>
                     </AccordionDetails>
                 </Accordion>
             ))}

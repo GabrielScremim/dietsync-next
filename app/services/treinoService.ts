@@ -12,10 +12,6 @@ export const getTreinos = () => {
     });
 };
 
-useEffect(() => {
-
-})
-
 export const CreateTreino = (treinos: any) => {
     return axios.post(`${TREINO_API_BASE_URL}treinos`, treinos, {
         headers: {
@@ -26,18 +22,8 @@ export const CreateTreino = (treinos: any) => {
     });
 }
 
-export const UpdateTreino = (treinos: any) => {
-    return axios.put(`${TREINO_API_BASE_URL}treinos`, treinos, {
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-        },
-        withCredentials: true, // ✅ fora do headers
-    });
-}
-
-export const getTreinByID = (id: number, id_treino: number) => {
-    return axios.get(`${TREINO_API_BASE_URL}treinos/usuarios/${id},treino/${id_treino}`, {
+export const getTreinoByID = (user: number, id: string) => {
+    return axios.get(`${TREINO_API_BASE_URL}treinos/usuario/${user}/treino/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
