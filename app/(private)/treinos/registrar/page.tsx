@@ -3,7 +3,7 @@ import SelectDiasSemana from "@/app/components/SelectDiasSemana";
 import TextArea from "@/app/components/TextArea";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import BtnSend from "@/app/components/BtnSend";
+import BtnSend from "@/app/components/SubmitButton";
 import { useRouter } from "next/navigation";
 import { CreateTreino } from "@/app/services/treinoService";
 export type Treino = {
@@ -38,13 +38,11 @@ export default function RegistrarTreinos() {
         frequencia: 0,
         dia_treino: 0,
     });
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsIm5vbWUiOiJzdHJpbmciLCJlbWFpbCI6InN0cmluZyIsImlhdCI6MTc2NjcwMzA0MiwiZXhwIjoxNzY2NzA2NjQyfQ.2BXvSxFFLvu3utshAh-6720SLzZt0WbfagR9K3L4QRA"
-
     const handleSubmit = async () => {
         // implementar lógica de submissão do formulário
         try {
             setLoading(true);
-            await CreateTreino(token, treino);
+            await CreateTreino(treino);
             // redireciona para a página de dietas
             router.push("/treinos");
         } catch (error) {

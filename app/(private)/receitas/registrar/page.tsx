@@ -3,7 +3,7 @@ import TextArea from "@/app/components/TextArea";
 import { CreateReceita } from "@/app/services/receitasService";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import BtnSend from "@/app/components/BtnSend";
+import BtnSend from "@/app/components/SubmitButton";
 
 export type Receita = {
     nome_receita: string;

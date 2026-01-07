@@ -35,7 +35,7 @@ export default function Receitas() {
                         id={`panel-${receita.id_receitas}-header`}
                     >
                         <Typography fontWeight="bold">
-                            {receita.nome_receita} — {receita.refeicao}
+                            {receita.nome_receita}
                         </Typography>
                     </AccordionSummary>
 
@@ -57,7 +57,7 @@ export default function Receitas() {
                         </Typography>
 
                         <Typography>
-                            <strong>Gorduras:</strong> {receita.gorduras} g
+                            <strong>Gorduras:</strong> {receita.gordura} g
                         </Typography>
 
                     </AccordionDetails>
