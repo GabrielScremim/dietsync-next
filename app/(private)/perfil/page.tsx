@@ -1,16 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Box, Container, TextField, Button, Grid, MenuItem, Select, InputLabel, FormControl, FormHelperText, Typography, IconButton, Divider } from '@mui/material';
+import { Box, Container, TextField, Button, Grid, MenuItem, Select, InputLabel, FormControl, Typography, Divider } from '@mui/material';
 import axios from 'axios';
 import Link from 'next/link';
 import { getDataUser } from '@/app/services/authService';
-
-export type Usuario = {
-    id: number;
-    name: string;
-    sobrenome: string;
-    email: string;
-};
 
 const Perfil = () => {
     const [usuario, setUsuario] = useState<any | null>([]);

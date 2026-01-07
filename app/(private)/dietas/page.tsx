@@ -40,53 +40,59 @@ export default function Dietas() {
             <Typography variant="h4" gutterBottom>
                 Página de Dietas
             </Typography>
-
-            {dietas.map((dieta) => (
-                <Accordion key={dieta.id_dieta} sx={{ mb: 2 }}>
-                    <AccordionSummary
-                        aria-controls={`panel-${dieta.id_dieta}-content`}
-                        id={`panel-${dieta.id_dieta}-header`}
-                    >
-                        <Typography fontWeight="bold">
-                            {dieta.nome_dieta} — {dieta.refeicao}
-                        </Typography>
-                    </AccordionSummary>
-
-                    <AccordionDetails>
-                        <Typography>
-                            <strong>Tipo:</strong> {dieta.tipo_dieta}
-                        </Typography>
-
-                        <Typography>
-                            <strong>Calorias:</strong> {dieta.calorias} kcal
-                        </Typography>
-
-                        <Typography>
-                            <strong>Proteínas:</strong> {dieta.proteinas} g
-                        </Typography>
-
-                        <Typography>
-                            <strong>Carboidratos:</strong> {dieta.carboidratos} g
-                        </Typography>
-
-                        <Typography>
-                            <strong>Gorduras:</strong> {dieta.gorduras} g
-                        </Typography>
-
-                        <Typography mt={2}>
-                            <strong>Alimentos:</strong> {dieta.alimentos}
-                        </Typography>
-
-                        {dieta.observacoes && (
-                            <Typography mt={1}>
-                                <strong>Observações:</strong> {dieta.observacoes}
+            {dietas ? (
+                dietas.map((dieta) => (
+                    <Accordion key={dieta.id_dieta} sx={{ mb: 2 }}>
+                        <AccordionSummary
+                            aria-controls={`panel-${dieta.id_dieta}-content`}
+                            id={`panel-${dieta.id_dieta}-header`}
+                        >
+                            <Typography fontWeight="bold">
+                                {dieta.nome_dieta} — {dieta.refeicao}
                             </Typography>
-                        )}
+                        </AccordionSummary>
 
-                        <Button href={`/dietas/editar/${dieta.id_dieta}`}>Editrar</Button>
-                    </AccordionDetails>
-                </Accordion>
-            ))}
+                        <AccordionDetails>
+                            <Typography>
+                                <strong>Tipo:</strong> {dieta.tipo_dieta}
+                            </Typography>
+
+                            <Typography>
+                                <strong>Calorias:</strong> {dieta.calorias} kcal
+                            </Typography>
+
+                            <Typography>
+                                <strong>Proteínas:</strong> {dieta.proteinas} g
+                            </Typography>
+
+                            <Typography>
+                                <strong>Carboidratos:</strong> {dieta.carboidratos} g
+                            </Typography>
+
+                            <Typography>
+                                <strong>Gorduras:</strong> {dieta.gorduras} g
+                            </Typography>
+
+                            <Typography mt={2}>
+                                <strong>Alimentos:</strong> {dieta.alimentos}
+                            </Typography>
+
+                            {dieta.observacoes && (
+                                <Typography mt={1}>
+                                    <strong>Observações:</strong> {dieta.observacoes}
+                                </Typography>
+                            )}
+
+                            <Button href={`/dietas/editar/${dieta.id_dieta}`}>Editrar</Button>
+                        </AccordionDetails>
+                    </Accordion>
+                ))
+            ) : (
+                <Typography variant="h4" gutterBottom>
+                    Página de Dietas
+                </Typography>
+            )
+            }
         </Box>
     );
 }
