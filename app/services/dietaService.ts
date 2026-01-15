@@ -20,7 +20,7 @@ export type Dieta = {
 
 // Função para obter dietas
 export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
-    return axios.get(`${DIETA_API_BASE_URL}dietas`, {
+    return axios.get(`${DIETA_API_BASE_URL}dietas/`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',

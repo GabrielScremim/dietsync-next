@@ -89,7 +89,7 @@ export default function Dietas() {
                 ))
             ) : (
                 <Typography variant="h4" gutterBottom>
-                    Página de Dietas
+                    Você não possui dietas
                 </Typography>
             )
             }

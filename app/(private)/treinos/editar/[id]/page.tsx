@@ -5,7 +5,7 @@ import { getTreinoByID } from "@/app/services/treinoService";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import BtnSend from "@/app/components/BtnSend";
+import BtnSend from "@/app/components/SubmitButton";
 export type Treino = {
     data: string; // YYYY-MM-DD
     tipo: string;
@@ -21,7 +21,6 @@ export type Treino = {
 
 export default function RegistrarTreinos() {
     const { id } = useParams<{ id: string }>()
-    const [descricao, setDescricao] = useState("");
     const [dia, setDia] = useState<string>("Segunda-feira");
     const [treino, setTreino] = useState<Treino>({
         data: new Date().toISOString().split("T")[0],
@@ -36,16 +35,7 @@ export default function RegistrarTreinos() {
         dia_treino: 0,
     });
     const [loading, setLoading] = useState<boolean>(false)
-    const [data, setData] = useState(Date);
-    const [tipo, setTipo] = useState<string>("");
-    const [nome, setNome] = useState<string>("");
-    const [exercicio, setExercicio] = useState<string>("");
-    const [repeticoes, setRepeticoes] = useState<number>(0);
-    const [series, setSeries] = useState<number>(0);
-    const [objetivo, setObjetivo] = useState<number>(0);
-    const [duracao, setDuracao] = useState<number>(0);
-    const [frequencia, setFrequencia] = useState<number>(0);
-
+    
     useEffect(() => {
         if (!id) return
 
@@ -53,18 +43,9 @@ export default function RegistrarTreinos() {
             try {
                 setLoading(true)
                 const res = await getTreinoByID(40, id)
-                const data = res.data
-                setTreino(data)
-                setData(data.data)
-                setTipo(data.tipo)
-                setNome(data.nome_treino)
-                setExercicio(data.exercicios)
-                setRepeticoes(data.repeticoes)
-                setSeries(data.series)
-                setObjetivo(data.objetivo)
-                setDuracao(data.duracao)
-                setFrequencia(data.frequencia)
-                console.log(data)
+                const data_treino = res.data
+                setTreino(data_treino)
+                console.log(data_treino)
             } catch (err) {
                 console.error("Erro ao buscar treino", err)
             } finally {
@@ -103,21 +84,21 @@ export default function RegistrarTreinos() {
                             <TextField
                                 fullWidth
                                 label="Data"
-                                value={data}
+                                value={treino.data || ''}
                                 onChange={(e) => setTreino({ ...treino, data: e.target.value })} />
                         </Grid>
                         <Grid size={{ xs: 4 }}>
                             <TextField
                                 fullWidth
                                 label="Tipo de Treino"
-                                value={tipo}
+                                value={treino.tipo}
                                 onChange={(e) => setTreino({ ...treino, tipo: e.target.value })} />
                         </Grid>
                         <Grid size={{ xs: 4 }}>
                             <TextField
                                 fullWidth
                                 label="Nome do Treino"
-                                value={nome}
+                                value={treino.nome_treino}
                                 onChange={(e) => setTreino({ ...treino, nome_treino: e.target.value })} />
                         </Grid>
                     </Grid>
@@ -125,7 +106,7 @@ export default function RegistrarTreinos() {
                 <Grid size={{ xs: 12 }}>
                     <TextArea
                         label="Exercícios (separados por vírgula)"
-                        value={exercicio}
+                        value={treino.exercicios}
                         onChange={(e) => setTreino({ ...treino, exercicios: e.target.value })}
                         placeholder="Descreva os exercícios do treino aqui..."
                         rows={10}
@@ -137,31 +118,31 @@ export default function RegistrarTreinos() {
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
                                 label="Repetições"
-                                value={repeticoes}
+                                value={treino.repeticoes}
                                 onChange={(e) => setTreino({ ...treino, repeticoes: Number(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
                                 label="Séries"
-                                value={series}
+                                value={treino.series}
                                 onChange={(e) => setTreino({ ...treino, series: Number(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
                                 label="Objetivo"
-                                value={objetivo}
+                                value={treino.objetivo}
                                 onChange={(e) => setTreino({ ...treino, objetivo: Number(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
                                 label="Duração (minutos"
-                                value={duracao}
+                                value={treino.duracao}
                                 onChange={(e) => setTreino({ ...treino, duracao: Number(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
                                 label="Frequência"
-                                value={frequencia}
+                                value={treino.frequencia}
                                 onChange={(e) => setTreino({ ...treino, frequencia: Number(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>

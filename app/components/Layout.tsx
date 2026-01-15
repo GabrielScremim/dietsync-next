@@ -38,7 +38,7 @@ const drawerWidthOpen = 220;
 const drawerWidthClosed = 72;
 
 const menuItems = [
-  { text: 'Home', icon: <Home />, href: '/' },
+  { text: 'Home', icon: <Home />, href: '/home' },
   { text: 'Registrar Dieta', icon: <BarChart />, href: '/dietas/registrar' },
   { text: 'Registrar Treino', icon: <Settings />, href: '/treinos/registrar' },
   { text: 'Registrar Receitas', icon: <Settings />, href: '/receitas/registrar' },
