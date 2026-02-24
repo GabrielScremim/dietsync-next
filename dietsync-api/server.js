@@ -11,8 +11,8 @@ app.use(express.json()); // Para parsear JSON
 app.use(cookieParser()); // Para ler cookies
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Front-end que vai consumir a API
-    credentials: true,               // Obrigatório para cookies cross-site
+    origin: true, // reflete a origem automaticamente
+    credentials: true,           // Obrigatório para cookies cross-site
   })
 );
 

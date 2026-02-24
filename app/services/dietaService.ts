@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 // Definindo a URL base da API
-const DIETA_API_BASE_URL = 'http://localhost:3001/';
+const DIETA_API_BASE_URL = 'http://localhost:3001/dietas/';
 // Tipagem do tipo Dieta
 export type Dieta = {
     nome_dieta: string;
@@ -20,7 +20,7 @@ export type Dieta = {
 
 // Função para obter dietas
 export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
-    return axios.get(`${DIETA_API_BASE_URL}dietas/`, {
+    return axios.get(`${DIETA_API_BASE_URL}`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -31,7 +31,7 @@ export const getDietas = (): Promise<AxiosResponse<Dieta[]>> => {
 
 // Função para obter uma dieta pelo ID
 export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
-       return axios.get(`${DIETA_API_BASE_URL}dietas/${id}`, {
+       return axios.get(`${DIETA_API_BASE_URL}/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -42,7 +42,7 @@ export const getDietaById = (id: number): Promise<AxiosResponse<Dieta>> => {
 
 // Função para criar uma nova dieta
 export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
-    return axios.post(`${DIETA_API_BASE_URL}dietas`, data, {
+    return axios.post(`${DIETA_API_BASE_URL}/`, data, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -52,7 +52,7 @@ export const CreateDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
 };
 
 export const EditDieta = (data: Dieta): Promise<AxiosResponse<Dieta>> => {
-    return axios.put(`${DIETA_API_BASE_URL}/dietas`, data, {
+    return axios.put(`${DIETA_API_BASE_URL}/`, data, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
