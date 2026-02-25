@@ -7,36 +7,34 @@ import BtnSend from "@/app/components/SubmitButton";
 import { CreateDieta } from "@/app/services/dietaService";
 
 export type Dieta = {
-    nome_dieta: string;
-    tipo_dieta: string;
-    calorias: number;
-    proteinas: number;
-    carboidratos: number;
-    gorduras: number;
-    data: string; // formato YYYY-MM-DD
-    refeicao: string;
-    quantidade: number;
-    alimentos: string;
-    observacoes: string;
-    fk_id_usuario_dieta: number;
+    NomeDieta: string;
+    TipoDieta: string;
+    Calorias: number;
+    Proteinas: number;
+    Carboidratos: number;
+    Gorduras: number;
+    DataDieta: string;
+    Refeicao: string;
+    Alimentos: string;
+    Quantidade: number;
+    Observacoes: string;
 };
 
 export default function RegistrarDietaPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const [dieta, setDieta] = useState<Dieta>({
-        nome_dieta: '',
-        tipo_dieta: '',
-        calorias: 0,
-        proteinas: 0,
-        carboidratos: 0,
-        gorduras: 0,
-        data: new Date().toISOString().split("T")[0],
-        refeicao: '',
-        quantidade: 0,
-        alimentos: '',
-        observacoes: '',
-        fk_id_usuario_dieta: 41, // exemplo
+         NomeDieta: '',
+         TipoDieta: '',
+         Calorias: 0,
+         Proteinas: 0,
+         Carboidratos: 0,
+         Gorduras: 0,
+         DataDieta: new Date().toISOString().split("T")[0],
+         Refeicao: '',
+         Alimentos: '',
+         Quantidade: 0,
+         Observacoes: '',
     });
 
     const handleSubmit = async () => {
@@ -64,29 +62,32 @@ export default function RegistrarDietaPage() {
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Nome da Dieta"
-                                value={dieta.nome_dieta}
+                                value={dieta.NomeDieta}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, nome_dieta: e.target.value })}
+                                    setDieta({ ...dieta, NomeDieta: e.target.value })}
                             />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Tipo de Dieta"
-                                value={dieta.tipo_dieta}
+                                value={dieta.TipoDieta}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, tipo_dieta: e.target.value })}
+                                    setDieta({ ...dieta, TipoDieta: e.target.value })}
                             />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Quantidade por dia"
-                                value={dieta.quantidade}
+                                value={dieta.Quantidade}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, quantidade: Number(e.target.value) })}
+                                    setDieta({ ...dieta, Quantidade: Number(e.target.value) })}
                             />
                         </Grid>
                     </Grid>
@@ -96,8 +97,8 @@ export default function RegistrarDietaPage() {
                         <Grid size={{ xs: 12 }}>
                             <TextArea
                                 label="Alimentos (separados por vírgula)"
-                                value={dieta.alimentos}
-                                onChange={(e) => setDieta({ ...dieta, alimentos: e.target.value })}
+                                value={dieta.Alimentos}
+                                onChange={(e) => setDieta({ ...dieta, Alimentos: e.target.value })}
                                 placeholder="Digite aqui..."
                                 rows={5}
                                 maxLength={300}
@@ -109,29 +110,32 @@ export default function RegistrarDietaPage() {
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Calorias"
-                                value={dieta.calorias}
+                                value={dieta.Calorias}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, calorias: Number(e.target.value) })}
+                                    setDieta({ ...dieta, Calorias: Number(e.target.value) })}
                             />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Proteinas"
-                                value={dieta.proteinas}
+                                value={dieta.Proteinas}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, proteinas: Number(e.target.value) })}
+                                    setDieta({ ...dieta, Proteinas: Number(e.target.value) })}
                             />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Carboidratos"
-                                value={dieta.carboidratos}
+                                value={dieta.Carboidratos}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, carboidratos: Number(e.target.value) })}
+                                    setDieta({ ...dieta, Carboidratos: Number(e.target.value) })}
                             />
                         </Grid>
                     </Grid>
@@ -139,19 +143,21 @@ export default function RegistrarDietaPage() {
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Gorduras"
-                                value={dieta.gorduras}
+                                value={dieta.Gorduras}
                                 onChange={(e) =>
-                                    setDieta({ ...dieta, gorduras: Number(e.target.value) })}
+                                    setDieta({ ...dieta, Gorduras: Number(e.target.value) })}
                             />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Refeição"
-                                value={dieta.refeicao}
-                                onChange={(e) => setDieta({ ...dieta, refeicao: e.target.value })}
+                                value={dieta.Refeicao}
+                                onChange={(e) => setDieta({ ...dieta, Refeicao: e.target.value })}
                             />
                         </Grid>
                     </Grid>
@@ -160,8 +166,8 @@ export default function RegistrarDietaPage() {
                         <Grid size={{ xs: 12 }}>
                             <TextArea
                                 label="Observações"
-                                value={dieta.observacoes}
-                                onChange={(e) => setDieta({ ...dieta, observacoes: e.target.value })}
+                                value={dieta.Observacoes}
+                                onChange={(e) => setDieta({ ...dieta, Observacoes: e.target.value })}
                                 placeholder="Digite aqui..."
                                 rows={5}
                                 maxLength={300}

@@ -7,37 +7,22 @@ import { useEffect, useState } from "react";
 import BtnSend from "@/app/components/SubmitButton";
 import { EditDieta, getDietaById } from "@/app/services/dietaService";
 import { useParams } from "next/navigation";
-
-export type Dieta = {
-    nome_dieta: string;
-    tipo_dieta: string;
-    calorias: number;
-    proteinas: number;
-    carboidratos: number;
-    gorduras: number;
-    data: string; // formato YYYY-MM-DD
-    refeicao: string;
-    quantidade: number;
-    alimentos: string;
-    observacoes: string;
-    fk_id_usuario_dieta: number;
-};
+import { Dieta } from "@/app/models";
 
 export default function EditarDietaPage() {
     const { id } = useParams<{ id: string }>()
-    const [dieta, setDieta] = useState<Dieta>({
-        nome_dieta: '',
-        tipo_dieta: '',
+    const [dieta, setDieta] = useState<any>({
+        nomeDIeta: '',
+        tipoDieta: '',
         calorias: 0,
         proteinas: 0,
         carboidratos: 0,
         gorduras: 0,
-        data: new Date().toISOString().split("T")[0],
+        dataDieta: new Date().toISOString().split("T")[0],
         refeicao: '',
-        quantidade: 0,
         alimentos: '',
+        quantidade: 0,
         observacoes: '',
-        fk_id_usuario_dieta: 41, // exemplo
     });
     const [loading, setLoading] = useState(false)
 
@@ -47,12 +32,12 @@ export default function EditarDietaPage() {
                 setLoading(true)
                 const res = await getDietaById(Number(id))
 
-                if (!res.data || res.data.length === 0) {
+                if (!res.data || res.data === null) {
                     console.warn("Dieta não encontrada")
                     return
                 }
 
-                const dieta = res.data[0]
+                const dieta = res.data
                 setDieta(dieta)
 
                 console.log("Dieta carregada:", dieta)
@@ -72,7 +57,7 @@ export default function EditarDietaPage() {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            await EditDieta(dieta);
+            await EditDieta(dieta, id);
             // redireciona para a página de dietas
             // router.push("/dietas");
         } catch (error) {
@@ -153,18 +138,18 @@ export default function EditarDietaPage() {
                                     <TextField
                                         fullWidth
                                         label="Nome da Dieta"
-                                        value={dieta?.nome_dieta || ''}
+                                        value={dieta?.nomeDieta || ''}
                                         onChange={(e) =>
-                                            setDieta({ ...dieta, nome_dieta: e.target.value })}
+                                            setDieta({ ...dieta, nomeDieta: e.target.value })}
                                     />
                                 </Grid>
                                 <Grid size={{ xs: 12, md: 4 }}>
                                     <TextField
                                         fullWidth
                                         label="Tipo de Dieta"
-                                        value={dieta.tipo_dieta}
+                                        value={dieta.tipoDieta}
                                         onChange={(e) =>
-                                            setDieta({ ...dieta, tipo_dieta: e.target.value })}
+                                            setDieta({ ...dieta, tipoDieta: e.target.value })}
                                     />
                                 </Grid>
                                 <Grid size={{ xs: 12, md: 4 }}>

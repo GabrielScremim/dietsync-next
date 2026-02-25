@@ -1,24 +1,8 @@
 'use client';
+import { Dieta } from "@/app/models";
 import { getDietas } from "@/app/services/dietaService";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-
-
-// types/Dieta.ts
-export interface Dieta {
-    id_dieta: number;
-    nome_dieta: string;
-    tipo_dieta: string;
-    calorias: number;
-    proteinas: number;
-    carboidratos: number;
-    gorduras: number;
-    data_dieta: string;
-    refeicao: string;
-    alimentos: string;
-    quantidade: number;
-    observacoes: string;
-}
 
 export default function Dietas() {
     const [dietas, setDietas] = useState<any[]>([]);
@@ -42,19 +26,19 @@ export default function Dietas() {
             </Typography>
             {dietas ? (
                 dietas.map((dieta) => (
-                    <Accordion key={dieta.id_dieta} sx={{ mb: 2 }}>
+                    <Accordion key={dieta.idDieta} sx={{ mb: 2 }}>
                         <AccordionSummary
-                            aria-controls={`panel-${dieta.id_dieta}-content`}
-                            id={`panel-${dieta.id_dieta}-header`}
+                            aria-controls={`panel-${dieta.idDieta}-content`}
+                            id={`panel-${dieta.idDieta}-header`}
                         >
                             <Typography fontWeight="bold">
-                                {dieta.nome_dieta} — {dieta.refeicao}
+                                {dieta.nomeDieta} — {dieta.refeicao}
                             </Typography>
                         </AccordionSummary>
 
                         <AccordionDetails>
                             <Typography>
-                                <strong>Tipo:</strong> {dieta.tipo_dieta}
+                                <strong>Tipo:</strong> {dieta.tipoDieta}
                             </Typography>
 
                             <Typography>
@@ -83,7 +67,7 @@ export default function Dietas() {
                                 </Typography>
                             )}
 
-                            <Button href={`/dietas/editar/${dieta.id_dieta}`}>Editrar</Button>
+                            <Button href={`/dietas/editar/${dieta.idDieta}`}>Editrar</Button>
                         </AccordionDetails>
                     </Accordion>
                 ))
