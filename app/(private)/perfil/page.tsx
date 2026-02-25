@@ -77,6 +77,7 @@ const Perfil = () => {
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Nome"
                                 name="nome"
@@ -87,6 +88,7 @@ const Perfil = () => {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Sobrenome"
                                 name="sobrenome"
@@ -97,6 +99,7 @@ const Perfil = () => {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Email"
                                 name="email"
@@ -123,6 +126,7 @@ const Perfil = () => {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Data de Nascimento"
                                 name="data_nasc"
@@ -134,6 +138,7 @@ const Perfil = () => {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Peso (kg)"
                                 name="peso"
@@ -145,6 +150,7 @@ const Perfil = () => {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
                             <TextField
+                                size='small'
                                 fullWidth
                                 label="Altura (m)"
                                 name="altura"
@@ -169,6 +175,7 @@ const Perfil = () => {
                 </Typography>
                 <form onSubmit={handleAlterarSenha}>
                     <TextField
+                        size='small'
                         fullWidth
                         label="Nova Senha"
                         type="password"
@@ -179,6 +186,7 @@ const Perfil = () => {
                         sx={{ mb: 2 }}
                     />
                     <TextField
+                        size='small'
                         fullWidth
                         label="Confirmar Senha"
                         type="password"
