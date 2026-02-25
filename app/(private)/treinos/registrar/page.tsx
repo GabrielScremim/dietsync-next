@@ -62,6 +62,7 @@ export default function RegistrarTreinos() {
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, xl: 6 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Tipo de Treino"
                                 value={treino.tipo}
@@ -69,6 +70,7 @@ export default function RegistrarTreinos() {
                         </Grid>
                         <Grid size={{ xs: 12, xl: 6 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Nome do Treino"
                                 value={treino.nome_treino}
@@ -90,6 +92,7 @@ export default function RegistrarTreinos() {
                     <Grid container spacing={2}>
                         <Grid size={{ xl: 2, md: 2, xs: 12 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Repetições"
                                 value={treino.repeticoes}
@@ -97,6 +100,7 @@ export default function RegistrarTreinos() {
                         </Grid>
                         <Grid size={{ xl: 2, md: 2, xs: 12 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Séries"
                                 value={treino.series}
@@ -104,6 +108,7 @@ export default function RegistrarTreinos() {
                         </Grid>
                         <Grid size={{ xl: 2, md: 2, xs: 12 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Objetivo"
                                 value={treino.objetivo}
@@ -111,6 +116,7 @@ export default function RegistrarTreinos() {
                         </Grid>
                         <Grid size={{ xl: 2, md: 2, xs: 12 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Duração (minutos)"
                                 value={treino.duracao}
@@ -118,6 +124,7 @@ export default function RegistrarTreinos() {
                         </Grid>
                         <Grid size={{ xl: 2, md: 2, xs: 12 }}>
                             <TextField
+                                size="small"
                                 fullWidth
                                 label="Frequência"
                                 value={treino.frequencia}

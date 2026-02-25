@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
 
-const TREINO_API_BASE_URL = 'http://localhost:3001/';
+const TREINO_API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export const getTreinos = () => {
-    return axios.get(`${TREINO_API_BASE_URL}treinos`, {
+    return axios.get(`${TREINO_API_BASE_URL}/treino`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -12,8 +12,8 @@ export const getTreinos = () => {
     });
 };
 
-export const CreateTreino = (treinos: any) => {
-    return axios.post(`${TREINO_API_BASE_URL}treinos`, treinos, {
+export const CreateTreino = (treino: any) => {
+    return axios.post(`${TREINO_API_BASE_URL}/treino`, treino, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -22,8 +22,18 @@ export const CreateTreino = (treinos: any) => {
     });
 }
 
-export const getTreinoByID = (user: number, id: string) => {
-    return axios.get(`${TREINO_API_BASE_URL}treinos/usuario/${user}/treino/${id}`, {
+export const getTreinoByID = (id: string) => {
+    return axios.get(`${TREINO_API_BASE_URL}/treino/${id}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        withCredentials: true, // ✅ fora do headers
+    });
+}
+
+export const putTreino = (id: string, treino: string) => {
+    return axios.put(`${TREINO_API_BASE_URL}/treino/${id}`, treino, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',

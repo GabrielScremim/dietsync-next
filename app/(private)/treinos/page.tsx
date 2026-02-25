@@ -18,7 +18,7 @@ type Treino = {
     dia_treino: string
 }
 export default function Treinos() {
-    const [treinos, setTreinos] = useState<Treino[]>([]);
+    const [treinos, setTreinos] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchTreinos = async () => {
@@ -46,7 +46,7 @@ export default function Treinos() {
                         id={`panel-${treino.tipo}-header`}
                     >
                         <Typography fontWeight="bold">
-                            {treino.nome_treino}
+                            {treino.nomeTreino}
                         </Typography>
                     </AccordionSummary>
 

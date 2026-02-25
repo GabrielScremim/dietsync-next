@@ -1,7 +1,7 @@
 'use client';
 import SelectDiasSemana from "@/app/components/SelectDiasSemana";
 import TextArea from "@/app/components/TextArea";
-import { getTreinoByID } from "@/app/services/treinoService";
+import { getTreinoByID, putTreino } from "@/app/services/treinoService";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ export type Treino = {
 export default function RegistrarTreinos() {
     const { id } = useParams<{ id: string }>()
     const [dia, setDia] = useState<string>("Segunda-feira");
-    const [treino, setTreino] = useState<Treino>({
+    const [treino, setTreino] = useState<any>({
         data: new Date().toISOString().split("T")[0],
         tipo: "",
         nome_treino: "",
@@ -35,14 +35,14 @@ export default function RegistrarTreinos() {
         dia_treino: 0,
     });
     const [loading, setLoading] = useState<boolean>(false)
-    
+
     useEffect(() => {
         if (!id) return
 
         const fetchTreino = async () => {
             try {
                 setLoading(true)
-                const res = await getTreinoByID(40, id)
+                const res = await getTreinoByID(id)
                 const data_treino = res.data
                 setTreino(data_treino)
                 console.log(data_treino)
@@ -61,7 +61,7 @@ export default function RegistrarTreinos() {
         try {
             setLoading(true);
             console.log("treino editado", treino)
-            // await EditarTreino(treino);
+            await putTreino(id, treino);
             // redireciona para a página de dietas
             // router.push("/treinos");
         } catch (error) {
@@ -98,8 +98,8 @@ export default function RegistrarTreinos() {
                             <TextField
                                 fullWidth
                                 label="Nome do Treino"
-                                value={treino.nome_treino}
-                                onChange={(e) => setTreino({ ...treino, nome_treino: e.target.value })} />
+                                value={treino.nomeTreino}
+                                onChange={(e) => setTreino({ ...treino, nomeTreino: e.target.value })} />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -131,7 +131,7 @@ export default function RegistrarTreinos() {
                             <TextField fullWidth
                                 label="Objetivo"
                                 value={treino.objetivo}
-                                onChange={(e) => setTreino({ ...treino, objetivo: Number(e.target.value) })} />
+                                onChange={(e) => setTreino({ ...treino, objetivo: String(e.target.value) })} />
                         </Grid>
                         <Grid size={{ xl: 2, xs: 12 }}>
                             <TextField fullWidth
