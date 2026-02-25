@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const USER_BASE_URL = 'http://localhost:3001/'
+const USER_BASE_URL =  process.env.NEXT_PUBLIC_API_URL;
 
 export type RegisterUserPayload = {
     name: string;
@@ -18,7 +18,7 @@ export async function createUser(
     payload: RegisterUserPayload
 ): Promise<AxiosResponse<RegisterUserPayload>> {
     return axios.post(
-        `${USER_BASE_URL}usuarios/registrarUsuario`,
+        `${USER_BASE_URL}/usuarios/registrarUsuario`,
         payload,
         {
             headers: {
