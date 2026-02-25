@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const API_URL = "http://localhost:3001/receitas";
+const API_URL =  process.env.NEXT_PUBLIC_API_URL;
 
 export type Receita = {
     nome_receita: string;
@@ -13,7 +13,7 @@ export type Receita = {
 };
 
 export const CreateReceita = (data: Receita): Promise<AxiosResponse<Receita[]>> => {
-    return axios.post(`${API_URL}`, data, {
+    return axios.post(`${API_URL}/receita`, data, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -23,7 +23,7 @@ export const CreateReceita = (data: Receita): Promise<AxiosResponse<Receita[]>> 
 }
 
 export const getReceitas = (): Promise<AxiosResponse<Receita[]>> => {
-    return axios.get(`${API_URL}`, {
+    return axios.get(`${API_URL}/receita`, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',

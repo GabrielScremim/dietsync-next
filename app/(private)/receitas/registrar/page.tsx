@@ -50,19 +50,19 @@ export default function RegistrarReceita() {
                 <Grid size={{ xs: 12 }}>
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, xl: 4 }}>
-                            <TextField fullWidth label="Nome da Receita" />
+                            <TextField size="small" fullWidth label="Nome da Receita" />
                         </Grid>
                         <Grid size={{ xs: 12, xl: 2 }}>
-                            <TextField fullWidth label="Calorias" />
+                            <TextField size="small" fullWidth label="Calorias" />
                         </Grid>
                         <Grid size={{ xs: 12, xl: 2 }}>
-                            <TextField fullWidth label="Proteínas" />
+                            <TextField size="small" fullWidth label="Proteínas" />
                         </Grid>
                         <Grid size={{ xs: 12, xl: 2 }}>
-                            <TextField fullWidth label="Carboidratos" />
+                            <TextField size="small" fullWidth label="Carboidratos" />
                         </Grid>
                         <Grid size={{ xs: 12, xl: 2 }}>
-                            <TextField fullWidth label="Gorduras" />
+                            <TextField size="small" fullWidth label="Gorduras" />
                         </Grid>
                     </Grid>
                 </Grid>
